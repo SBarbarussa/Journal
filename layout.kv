@@ -1,0 +1,427 @@
+MDSM:
+    id: MDSM
+    Screen_1:
+    Screen_2:
+    Screen_3:
+    Screen_4:
+
+<Screen_1>:
+    name: "MainScreen"
+    md_bg_color: self.theme_cls.secondaryContainerColor
+    MDButton:
+        pos_hint: {"center_x": .5, "center_y": .7}
+        on_release: app.root.current = "Screen_2"
+        height: "80dp"
+        theme_width: "Custom"
+        size_hint_x: .7
+        style: "tonal"
+        theme_bg_color: "Custom"
+        md_bg_color: "lightblue"
+
+        MDButtonIcon:
+            icon: "book-open"
+
+        MDButtonText:
+            pos_hint: {"center_x": .5, "center_y": .5}
+            text: "Журнал"
+            font_style: "Title"
+            #theme_text_color: "Custom"
+            #text_color: "white"
+
+    MDButton:
+        pos_hint: {"center_x": .5, "center_y": .5}
+        on_release: app.root.current = "Screen_3"
+        height: "80dp"
+        theme_width: "Custom"
+        size_hint_x: .7
+        style: "tonal"
+        theme_bg_color: "Custom"
+        md_bg_color: "lightblue"
+
+        MDButtonIcon:
+            icon: "account-group"
+
+        MDButtonText:
+            pos_hint: {"center_x": .5, "center_y": .5}
+            text: "Моя группа"
+            font_style: "Title"
+
+    MDButton:
+        pos_hint: {"center_x": .5, "center_y": .3}
+        on_release: app.root.current = "Screen_4"
+        height: "80dp"
+        theme_width: "Custom"
+        size_hint_x: .7
+        style: "tonal"
+        theme_bg_color: "Custom"
+        md_bg_color: "lightblue"
+
+        MDButtonIcon:
+            icon: "wrench"
+
+        MDButtonText:
+            pos_hint: {"center_x": .5, "center_y": .5}
+            text: "Настройки"
+            font_style: "Title"
+
+    MDTopAppBar:
+        type: "small"
+        pos_hint: {'top':1}
+        theme_bg_color: "Custom"
+        md_bg_color: 0.39, 0.66, 0.71, 1
+
+        MDTopAppBarLeadingButtonContainer:
+
+            MDActionTopAppBarButton:
+                icon: "menu"
+                on_release: nav_drawer.set_state("toggle")
+    MDNavigationLayout:
+        MDNavigationDrawer:
+            id: nav_drawer
+            radius: 0, dp(16), dp(16), 0
+            size_hint_x: 0.7
+            md_bg_color: self.theme_cls.secondaryContainerColor
+            MDNavigationDrawerMenu:
+                MDNavigationDrawerLabel:
+                    text: "О приложении \nРазработчик:\nЗарипов Сулейман \nВерсия: alpha 1"
+                MDNavigationDrawerDivider:
+                MDIconButton:
+                    icon: "exit-to-app"
+                    on_release: app.exit_app()
+                MDLabel:
+                    text: "Выход"
+
+<Screen_2>:
+    name: 'Screen_2'
+    md_bg_color: self.theme_cls.secondaryContainerColor
+
+    MDTopAppBar:
+        type: "small"
+        pos_hint: {'top':1}
+        theme_bg_color: "Custom"
+        md_bg_color: 0.39, 0.66, 0.71, 1
+
+        MDTopAppBarLeadingButtonContainer:
+
+            MDActionTopAppBarButton:
+                icon: "arrow-left"
+                on_release: app.root.current = 'MainScreen'
+        MDTopAppBarTrailingButtonContainer:
+            #MDTopAppBarTitle:
+                #text: "                                                           "
+            MDActionTopAppBarButton:
+                id: question
+                icon: "comment-question-outline"
+                on_release: hint_drawer.set_state("toggle")
+    MDLabel:
+        text: 'Список учащихся: '
+        font_style: "Title"
+        pos_hint: {"center_x": .5, "center_y": 0.86}
+    MDLabel:
+        text: 'Количество пропусков: '
+        font_style: "Title"
+        pos_hint: {"center_x": .5, "center_y": 0.706}
+    MDLabel:
+        text: 'Количество пропусков: '
+        font_style: "Title"
+        pos_hint: {"center_x": .5, "center_y": 0.546}
+    MDLabel:
+        text: 'Количество пропусков: '
+        font_style: "Title"
+        pos_hint: {"center_x": .5, "center_y": 0.386}
+    MDLabel:
+        text: 'Количество пропусков: '
+        font_style: "Title"
+        pos_hint: {"center_x": .5, "center_y": 0.226}
+    MDLabel:
+        text: 'Количество пропусков: '
+        font_style: "Title"
+        pos_hint: {"center_x": .5, "center_y": 0.066}
+    MDButton:
+        on_release: root.refresh()
+        pos_hint: {"center_x": .8, "center_y": 0.865}
+        theme_width: "Custom"
+        size_hint_x: .4
+        style: "tonal"
+        theme_bg_color: "Custom"
+        md_bg_color: "lightblue"
+
+        MDButtonText:
+            pos_hint: {"center_x": .5, "center_y": .5}
+            text: "Обновить"
+            font_style: "Title"   
+
+    MDLabel:
+        pos_hint: {"center_x": .5, "center_y": 0.756}
+        id: n1n
+        text: ">Ученик №1"
+        font_style: "Title"
+    MDButton:
+        pos_hint: {"center_x": 0.85, "center_y": 0.71}
+        on_release: root.counter1()
+        theme_width: "Custom"
+        size_hint_x: 0.2
+        style: "tonal"
+        theme_bg_color: "Custom"
+        md_bg_color: "lightblue"
+        MDButtonText:
+            id: c1
+            pos_hint: {"center_x": .5, "center_y": .5}
+            text: "0"
+            font_style: "Title"   
+    MDLabel:
+        pos_hint: {"center_x": .5, "center_y": 0.596}
+        id: n2n
+        text: ">Ученик №2"
+        font_style: "Title"
+    MDButton:
+        pos_hint: {"center_x": 0.85, "center_y": 0.55}
+        on_release: root.counter2()
+        theme_width: "Custom"
+        size_hint_x: 0.2
+        style: "tonal"
+        theme_bg_color: "Custom"
+        md_bg_color: "lightblue"
+        MDButtonText:
+            id: c2
+            pos_hint: {"center_x": .5, "center_y": .5}
+            text: "0"
+            font_style: "Title"   
+    MDLabel:
+        pos_hint: {"center_x": .5, "center_y": 0.436}
+        id: n3n
+        text: ">Ученик №3"
+        font_style: "Title"
+    MDButton:
+        pos_hint: {"center_x": 0.85, "center_y": 0.39}
+        on_release: root.counter3()
+        theme_width: "Custom"
+        size_hint_x: 0.2
+        style: "tonal"
+        theme_bg_color: "Custom"
+        md_bg_color: "lightblue"
+        MDButtonText:
+            id: c3
+            pos_hint: {"center_x": .5, "center_y": .5}
+            text: "0"
+            font_style: "Title"   
+    MDLabel:
+        pos_hint: {"center_x": .5, "center_y": 0.276}
+        id: n4n
+        text: ">Ученик №4"
+        font_style: "Title"
+    MDButton:
+        pos_hint: {"center_x": 0.85, "center_y": 0.23}
+        on_release: root.counter4()
+        theme_width: "Custom"
+        size_hint_x: 0.2
+        style: "tonal"
+        theme_bg_color: "Custom"
+        md_bg_color: "lightblue"
+        MDButtonText:
+            id: c4
+            pos_hint: {"center_x": .5, "center_y": .5}
+            text: "0"
+            font_style: "Title"   
+    MDLabel:
+        pos_hint: {"center_x": .5, "center_y": 0.116}
+        id: n5n
+        text: ">Ученик №5"
+        font_style: "Title"
+    MDButton:
+        pos_hint: {"center_x": 0.85, "center_y": 0.07}
+        on_release: root.counter5()
+        theme_width: "Custom"
+        size_hint_x: 0.2
+        style: "tonal"
+        theme_bg_color: "Custom"
+        md_bg_color: "lightblue"
+        MDButtonText:
+            id: c5
+            pos_hint: {"center_x": .5, "center_y": .5}
+            text: "0"
+            font_style: "Title"   
+    MDNavigationLayout:
+        MDNavigationDrawer:
+            anchor: "right"
+            id: hint_drawer
+            radius: 0, dp(16), dp(16), 0
+            size_hint_x: 0.7
+            md_bg_color: self.theme_cls.secondaryContainerColor
+            MDNavigationDrawerMenu:
+                MDNavigationDrawerLabel:
+                    text: root.hint
+
+<Screen_3>:
+    name: 'Screen_3'
+    md_bg_color: self.theme_cls.secondaryContainerColor
+    MDTopAppBar:
+        type: "small"
+        pos_hint: {'top':1}
+        theme_bg_color: "Custom"
+        md_bg_color: 0.39, 0.66, 0.71, 1
+
+        MDTopAppBarLeadingButtonContainer:
+
+            MDActionTopAppBarButton:
+                icon: "arrow-left"
+                on_release: app.root.current = 'MainScreen'
+        MDTopAppBarTrailingButtonContainer:
+            #MDTopAppBarTitle:
+                #text: "                                                "
+            MDActionTopAppBarButton:
+                icon: "refresh"
+                on_release: root.refdata()
+            MDActionTopAppBarButton:
+                id: question1
+                icon: "comment-question-outline"
+                on_release: hint_drawer1.set_state("toggle")
+
+    MDButton:
+        pos_hint: {"center_x": 0.25, "center_y": 0.865}
+        on_release: root.delete_data()
+        theme_width: "Custom"
+        size_hint_x: 0.49
+        style: "tonal"
+        theme_bg_color: "Custom"
+        md_bg_color: "lightblue"
+
+        MDButtonText:
+            pos_hint: {"center_x": .5, "center_y": .5}
+            text: "Удалить"
+            font_style: "Title"     
+
+    MDButton:
+        pos_hint: {"center_x": 0.75, "center_y": 0.865}
+        on_release: root.save_data()
+        theme_width: "Custom"
+        size_hint_x: 0.49
+        style: "tonal"
+        theme_bg_color: "Custom"
+        md_bg_color: "lightblue"
+
+        MDButtonText:
+            pos_hint: {"center_x": .5, "center_y": .5}
+            text: "Добавить"
+            font_style: "Title"   
+
+    MDTextField:
+        pos_hint: {"center_x": 0.5, "center_y": 0.786}
+        size_hint_x: 1
+        id: surname_input
+        mode: "filled"
+        multiline: False
+        MDTextFieldHintText:
+            text: "Фамилия"
+
+    MDTextField:
+        pos_hint: {"center_x": 0.5, "center_y": 0.699}
+        size_hint_x: 1
+        id: name_input
+        mode: "filled"
+        multiline: False
+
+        MDTextFieldHintText:
+            text: "Имя"
+
+    MDLabel:
+        pos_hint: {"center_x": 0.5, "center_y": 0.599}
+        id: n1
+        text: ">Ученик №1"
+        font_style: "Title"
+
+    MDLabel:
+        pos_hint: {"center_x": 0.5, "center_y": 0.469}
+        id: n2
+        text: ">Ученик №2"
+        font_style: "Title"
+    MDLabel:
+        pos_hint: {"center_x": 0.5, "center_y": 0.339}
+        id: n3
+        text: ">Ученик №3"
+        font_style: "Title"
+    MDLabel:
+        pos_hint: {"center_x": 0.5, "center_y": 0.209}
+        id: n4
+        text: ">Ученик №4"
+        font_style: "Title"
+    MDLabel:
+        pos_hint: {"center_x": 0.5, "center_y": 0.079}
+        id: n5
+        text: ">Ученик №5"
+        font_style: "Title"
+    MDNavigationLayout:
+        MDNavigationDrawer:
+            anchor: "right"
+            id: hint_drawer1
+            radius: 0, dp(16), dp(16), 0
+            size_hint_x: 0.7
+            md_bg_color: self.theme_cls.secondaryContainerColor
+            MDNavigationDrawerMenu:
+                MDNavigationDrawerLabel:
+                    text: root.hint
+<Screen_4>:
+    name: 'Screen_4'
+    md_bg_color: self.theme_cls.secondaryContainerColor
+
+    MDSwitch:
+        pos_hint: {'center_x': 0.87, 'center_y': 0.85}
+        on_active: app.switch_theme_style()
+
+    MDLabel:
+        pos_hint: {"center_x": 0.55, "center_y": 0.85}
+        font_style: "Title"
+        text: "Изменить тему"
+
+    MDDivider:
+        size_hint_x: 1
+        pos_hint: {'center_y': 0.8}
+
+    MDLabel:
+        pos_hint: {"center_x": 0.55, "center_y": 0.73}
+        font_style: "Title"
+        text: "Очистка количество \nпропусков"
+
+    MDDivider:
+        size_hint_x: 1
+        pos_hint: {'center_y': 0.65}
+
+    MDButton:
+        pos_hint: {"center_x": 0.85, "center_y": 0.73}
+        on_release: root.clear_count()
+        height: "50dp"
+        theme_width: "Custom"
+        size_hint_x: .2
+        style: "tonal"
+        theme_bg_color: "Custom"
+        md_bg_color: "lightblue"
+
+        MDButtonText:
+            pos_hint: {"center_x": .5, "center_y": .5}
+            text: "Очистка"
+    MDButton:
+        pos_hint: {"center_x": 0.5, "center_y": 0.55}
+        on_release: root.show_alert_dialog()
+        height: "80dp"
+        theme_width: "Custom"
+        size_hint_x: .7
+        style: "tonal"
+        theme_bg_color: "Custom"
+        md_bg_color: "lightblue"
+
+        MDButtonText:
+            pos_hint: {"center_x": .5, "center_y": .5}
+            text: "Отчет"
+            font_style: "Title"
+    MDTopAppBar:
+        type: "small"
+        pos_hint: {'top':1}
+        theme_bg_color: "Custom"
+        md_bg_color: 0.39, 0.66, 0.71, 1
+
+        MDTopAppBarLeadingButtonContainer:
+
+            MDActionTopAppBarButton:
+                icon: "arrow-left"
+                on_release: app.root.current = 'MainScreen'    
+#
